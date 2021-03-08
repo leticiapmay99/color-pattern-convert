@@ -57,7 +57,6 @@ export class PageConvert implements OnInit {
     }
    
     sendData() {
-        const FORM = this.form1.value
         const RED = parseInt(this.form1.get('R')?.value)
         const GREEN = parseInt(this.form1.get('G')?.value)
         const BLUE = parseInt(this.form1.get('B')?.value)
@@ -65,7 +64,6 @@ export class PageConvert implements OnInit {
     }
 
     sendData2() {
-        const FORM = this.form2.value
         const RED = parseInt(this.form2.get('R')?.value)
         const GREEN = parseInt(this.form2.get('G')?.value)
         const BLUE = parseInt(this.form2.get('B')?.value)
@@ -87,10 +85,12 @@ export class PageConvert implements OnInit {
         const DIV_GREEN = GREEN/255
         const DIV_BLUE = BLUE/255
 
-        this.black = 1-Math.max(DIV_RED, DIV_GREEN, DIV_BLUE)
-        this.cyan = (1-DIV_RED-this.black) / (1-this.black)
-        this.magenta = (1-DIV_GREEN-this.black) / (1-this.black)
-        this.yellow = (1-DIV_BLUE-this.black) / (1-this.black)
+        const black100 = (1-Math.max(DIV_RED, DIV_GREEN, DIV_BLUE)) * 100
+        const black = 1-Math.max(DIV_RED, DIV_GREEN, DIV_BLUE)
+        this.black = black100
+        this.cyan = ((1-DIV_RED-black) / (1-black)) * 100
+        this.magenta = ((1-DIV_GREEN-black) / (1-black)) * 100
+        this.yellow = ((1-DIV_BLUE-black) / (1-black)) * 100
 
     }
 
@@ -101,8 +101,8 @@ export class PageConvert implements OnInit {
         const YELLOW = parseInt(this.form4.get('Y')?.value)
         const BLACK =  parseInt(this.form4.get('K')?.value)
 
-        this.red = 255*(1-CYAN)*(1-BLACK)
-        this.green = 255*(1-MAGENTA)*(1-BLACK)
-        this.blue = 255*(1-YELLOW)*(1-BLACK)
+        this.red = 255*(1-(CYAN/100))*(1-(BLACK/100))
+        this.green = 255*(1-(MAGENTA/100))*(1-(BLACK/100))
+        this.blue = 255*(1-(YELLOW/100))*(1-(BLACK/100))
     }
 }
