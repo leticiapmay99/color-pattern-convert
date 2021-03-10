@@ -1,103 +1,87 @@
 <h1 class="centralizer">Conversor de Padrão de cores</h1>
-<h1>Converter um valor RGB para Escala de Cinza</h1>
-<form [formGroup]="form1" (ngSubmit)="sendData()">
-   <div>
 
-       <mat-form-field class="margin">
-           <mat-label>R</mat-label>
-           <input matInput  type="number" formControlName="R">
-       </mat-form-field>
 
-       <mat-form-field class="margin">
-           <mat-label>G</mat-label>
-           <input matInput  type="number" formControlName="G">
-       </mat-form-field>
 
-       <mat-form-field class="margin">
-           <mat-label>B</mat-label>
-           <input matInput  type="number" formControlName="B">
-       </mat-form-field>
-   </div>
+<h2>Converter um valor RGB para Escala de Cinza</h2>
+<form [formGroup]="form1" (ngSubmit)="RGBToGrayscale()">
+    <div>
 
-   <!-- <div>
-       <mat-form-field class="margin" >
-           <mat-label>H</mat-label>
-           <input matInput  type="number" formControlName="H">
-       </mat-form-field>
-
-       <mat-form-field class="margin">
-            <mat-label>S</mat-label>
-            <input matInput  type="number" formControlName="S">
+        <mat-form-field class="margin">
+            <mat-label>R</mat-label>
+            <input matInput  type="number" formControlName="R">
         </mat-form-field>
 
         <mat-form-field class="margin">
-            <mat-label>V</mat-label>
-            <input matInput  type="number" formControlName="V">
+            <mat-label>G</mat-label>
+            <input matInput  type="number" formControlName="G">
         </mat-form-field>
-   </div> -->
-   
+
+        <mat-form-field class="margin">
+            <mat-label>B</mat-label>
+            <input matInput  type="number" formControlName="B">
+        </mat-form-field>
+    </div>
+    
     <div>
-      <button mat-raised-button color="primary"> Converter</button>
+        <button mat-raised-button color="primary"> Converter</button>
     </div>
     <p>
         Resultado: {{average}}
     </p>
 </form>
 
-<h1>Normalizar um valor RGB</h1>
-<form [formGroup]="form2" (ngSubmit)="sendData2()">
-   <div>
-
-       <mat-form-field class="margin">
-           <mat-label>R</mat-label>
-           <input matInput  type="number" formControlName="R">
-       </mat-form-field>
-
-       <mat-form-field class="margin">
-           <mat-label>G</mat-label>
-           <input matInput  type="number" formControlName="G">
-       </mat-form-field>
-
-       <mat-form-field class="margin">
-           <mat-label>B</mat-label>
-           <input matInput  type="number" formControlName="B">
-       </mat-form-field>
-   </div>
-
-  
+<h2>Normalizar um valor RGB</h2>
+<form [formGroup]="form2" (ngSubmit)="normalizeRGBvalue()">
     <div>
-      <button mat-raised-button color="primary"> Converter</button>
+
+        <mat-form-field class="margin">
+            <mat-label>R</mat-label>
+            <input matInput  type="number" formControlName="R">
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <mat-label>G</mat-label>
+            <input matInput  type="number" formControlName="G">
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <mat-label>B</mat-label>
+            <input matInput  type="number" formControlName="B">
+        </mat-form-field>
+    </div>
+
+    
+    <div>
+        <button mat-raised-button color="primary"> Converter</button>
     </div>
     <p>
-       Resultado: {{normalization}}
+        Resultado: {{normalization}}
     </p>
 </form>
 
-
-
-<h1>Converter um valor RGB para CMYK</h1>
-<form [formGroup]="form3" (ngSubmit)="sendData3()">
-   <div>
-
-       <mat-form-field class="margin">
-           <mat-label>R</mat-label>
-           <input matInput  type="number" formControlName="R">
-       </mat-form-field>
-
-       <mat-form-field class="margin">
-           <mat-label>G</mat-label>
-           <input matInput  type="number" formControlName="G">
-       </mat-form-field>
-
-       <mat-form-field class="margin">
-           <mat-label>B</mat-label>
-           <input matInput  type="number" formControlName="B">
-       </mat-form-field>
-   </div>
-
-  
+<h2>Converter um valor RGB para CMYK</h2>
+<form [formGroup]="form3" (ngSubmit)="RGBtoCMYK()">
     <div>
-      <button mat-raised-button color="primary"> Converter</button>
+
+        <mat-form-field class="margin">
+            <mat-label>R</mat-label>
+            <input matInput  type="number" formControlName="R">
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <mat-label>G</mat-label>
+            <input matInput  type="number" formControlName="G">
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <mat-label>B</mat-label>
+            <input matInput  type="number" formControlName="B">
+        </mat-form-field>
+    </div>
+
+    
+    <div>
+        <button mat-raised-button color="primary"> Converter</button>
     </div>
     <p>Cyan color (C): {{cyan}}</p>
     <p>Magenta color (M): {{magenta}}</p>
@@ -106,36 +90,69 @@
 </form>
 
 
-<h1>Converter um valor CMYK para RGB</h1>
-<form [formGroup]="form4" (ngSubmit)="sendData4()">
-   <div>
+<h2>Converter um valor CMYK para RGB</h2>
+<form [formGroup]="form4" (ngSubmit)="CMYKtoRGB()">
+    <div>
 
-       <mat-form-field class="margin">
-           <mat-label>C</mat-label>
-           <input matInput  type="number" formControlName="C">
-       </mat-form-field>
+        <mat-form-field class="margin">
+            <mat-label>C</mat-label>
+            <input matInput  type="number" formControlName="C">
+        </mat-form-field>
 
-       <mat-form-field class="margin">
-           <mat-label>M</mat-label>
-           <input matInput  type="number" formControlName="M">
-       </mat-form-field>
+        <mat-form-field class="margin">
+            <mat-label>M</mat-label>
+            <input matInput  type="number" formControlName="M">
+        </mat-form-field>
 
-       <mat-form-field class="margin">
-           <mat-label>Y</mat-label>
-           <input matInput  type="number" formControlName="Y">
-       </mat-form-field>
-       
-       <mat-form-field class="margin">
+        <mat-form-field class="margin">
+            <mat-label>Y</mat-label>
+            <input matInput  type="number" formControlName="Y">
+        </mat-form-field>
+        
+        <mat-form-field class="margin">
             <mat-label>K</mat-label>
             <input matInput  type="number" formControlName="K">
         </mat-form-field>
-   </div>
+    </div>
 
     <div>
-      <button mat-raised-button color="primary"> Converter</button>
+        <button mat-raised-button color="primary"> Converter</button>
     </div>
     <p>Red color (R): {{red}}</p>
     <p>Green color (G): {{green}}</p>
     <p>Blue color (B): {{blue}}</p>
+
+</form>
+
+
+
+
+<h2>Converter um valor RGB para HSV</h2>
+<form [formGroup]="form5" (ngSubmit)="RGBtoHSV()">
+    <div>
+
+        <mat-form-field class="margin">
+            <mat-label>R</mat-label>
+            <input matInput  type="number" formControlName="R">
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <mat-label>G</mat-label>
+            <input matInput  type="number" formControlName="G">
+        </mat-form-field>
+
+        <mat-form-field class="margin">
+            <mat-label>B</mat-label>
+            <input matInput  type="number" formControlName="B">
+        </mat-form-field>
+        
+    </div>
+
+    <div>
+        <button mat-raised-button color="primary"> Converter</button>
+    </div>
+    <p>Hue (H): {{hue}}</p>
+    <p>Saturation (S): {{saturation}}</p>
+    <p>Value (V): {{value}}</p>
 
 </form>
