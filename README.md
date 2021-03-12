@@ -3,6 +3,7 @@ Simples aplicação para fazer a conversão dos seguintes padrões de cores:
 
 * Normalizar um valor RGB.
 * Converter um valor RGB para HSV.
+* Converter um valor HSV para RGB
 * Converter um valor RGB para CMYK.
 * Converter CMYK para RGB.
 * Converter um valor RGB para Escala de Cinza.

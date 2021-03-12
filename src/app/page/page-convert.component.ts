@@ -23,11 +23,19 @@ export class PageConvert implements OnInit {
     blue:any
     red: any
     green:any
-
-
+    
     hue: any
     saturation: any
     value: any
+
+    redLinha: any
+    blueLinha: any
+    greenLinha: any
+    red2: any
+    blue2: any
+    green2: any
+
+    
 
     form1: FormGroup
     form2: FormGroup
@@ -142,4 +150,38 @@ export class PageConvert implements OnInit {
         this.saturation = ((cmax-cmin)/cmax)*100
         this.value = cmax*100
     }
+
+
+    HSVtoRGB() {
+        const HUE = (this.form6.get('H')?.value)
+        const SATURATION = (this.form6.get('S')?.value) /100
+        const VALUE = (this.form6.get('V')?.value)/100
+
+        const C = VALUE*SATURATION
+        const X = C*(1-Math.abs((parseInt(HUE)/60)%2-1))
+        const M = VALUE - C
+
+        if(HUE>=0 && HUE<60) {
+            this.redLinha = C, this.greenLinha = X, this.blueLinha = 0;
+        }
+        if (HUE>=60 && HUE < 120) {
+           this.redLinha = X, this.greenLinha = C, this.blueLinha = 0;
+        } else if(HUE>=120 && HUE < 180) {
+           this.redLinha = 0, this.greenLinha = C, this.blueLinha = X;
+
+        } else if (HUE>=180 && HUE < 240) {
+           this.redLinha = 0, this.greenLinha = X, this.blueLinha = C;
+        } else if (HUE>=240 && HUE < 300) {
+           this.redLinha = X, this.greenLinha = 0, this.blueLinha = C;
+
+        } else if (HUE>=300 && HUE < 360) {
+           this.redLinha = C, this.greenLinha = 0, this.blueLinha = X;  
+        }   
+        
+        this.red2 = (this.redLinha+M)*255;
+        this.green2= (this.greenLinha+M)*255;
+        this.blue2= (this.blueLinha+M)*255;
+    }
+
+
 }

@@ -152,4 +152,34 @@
         
         </form>
     </mat-card>
+
+    <mat-card class="margin-card">
+
+        <h2>Converter um valor HSV para RGB</h2>
+        <form [formGroup]="form6" (ngSubmit)="HSVtoRGB()">
+        
+                <mat-form-field class="margin">
+                    <mat-label>H</mat-label>
+                    <input matInput  type="number" formControlName="H">
+                </mat-form-field>
+        
+                <mat-form-field class="margin">
+                    <mat-label>S</mat-label>
+                    <input matInput  type="number" formControlName="S">
+                </mat-form-field>
+        
+                <mat-form-field class="margin">
+                    <mat-label>V</mat-label>
+                    <input matInput  type="number" formControlName="V">
+                </mat-form-field>
+                
+            <div>
+                <button mat-raised-button color="primary"> Converter</button>
+            </div>
+            <p>Red color (R): {{red2}}</p>
+            <p>Green color (G): {{green2}}</p>
+            <p>Blue color (B): {{blue2}}</p>
+        
+        </form>
+    </mat-card>
 </div>
