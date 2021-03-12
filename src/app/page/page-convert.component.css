@@ -16,3 +16,24 @@
     display: flex;
     justify-content: center;
 }
+.centralizer-page {
+    display: grid;
+    justify-content: center;
+}
+
+.margin-card {
+    margin-top: 5rem;   
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: #88CDF6;
+}
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    color:black;
+}
+h1 {
+    color: #7097AB;
+}
+h2 {
+    color: #ABD1DC;
+}
