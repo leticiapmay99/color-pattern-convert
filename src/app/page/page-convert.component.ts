@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-page-convert',
@@ -91,12 +91,12 @@ export class PageConvert implements OnInit {
         const RED = parseInt(this.form2.get('R')?.value)
         const GREEN = parseInt(this.form2.get('G')?.value)
         const BLUE = parseInt(this.form2.get('B')?.value)
-        const sunRed = (RED/(RED + GREEN + BLUE))
-        const sunGreen = (GREEN/(RED + GREEN + BLUE))
-        const sunBlue= (BLUE/(RED + GREEN + BLUE))
+        const SUN_RED = (RED/(RED + GREEN + BLUE))
+        const SUN_GREEN = (GREEN/(RED + GREEN + BLUE))
+        const SUN_BLUE = (BLUE/(RED + GREEN + BLUE))
 
-        this.normalization = sunRed + sunGreen + sunBlue
-    }
+        this.normalization = SUN_RED + SUN_GREEN + SUN_BLUE
+     }
 
     RGBtoCMYK() {
         
@@ -104,13 +104,13 @@ export class PageConvert implements OnInit {
         const GREEN = (this.form3.get('G')?.value)/255
         const BLUE = (this.form3.get('B')?.value)/255
       
-        const black100 = (1-Math.max(RED, GREEN, BLUE)) * 100
-        const black = 1-Math.max(RED, GREEN, BLUE)
+        const BLACK_100 = (1-Math.max(RED, GREEN, BLUE)) * 100
+        const BLACK = 1-Math.max(RED, GREEN, BLUE)
 
-        this.black = black100
-        this.cyan = ((1-RED-black) / (1-black)) * 100
-        this.magenta = ((1-GREEN-black) / (1-black)) * 100
-        this.yellow = ((1-BLUE-black) / (1-black)) * 100
+        this.black = BLACK_100
+        this.cyan = ((1-RED-BLACK) / (1-BLACK)) * 100
+        this.magenta = ((1-GREEN-BLACK) / (1-BLACK)) * 100
+        this.yellow = ((1-BLUE-BLACK) / (1-BLACK)) * 100
 
     }
 
@@ -131,24 +131,24 @@ export class PageConvert implements OnInit {
         const GREEN = (this.form5.get('G')?.value) / 255
         const BLUE = (this.form5.get('B')?.value) / 255
       
-        const cmax = Math.max(RED, GREEN, BLUE)
-        const cmin = Math.min(RED, GREEN, BLUE)
+        const C_MAX = Math.max(RED, GREEN, BLUE)
+        const C_MIN = Math.min(RED, GREEN, BLUE)
         
-        if((cmax === RED) && (GREEN >= BLUE)) {
-            this.hue = 60*((GREEN-BLUE)/(cmax-cmin))+0
+        if((C_MAX === RED) && (GREEN >= BLUE)) {
+            this.hue = 60*((GREEN-BLUE)/(C_MAX-C_MIN))+0
         }
-        if((cmax === RED) && (GREEN < BLUE)) {
-            this.hue = 60*((GREEN-BLUE)/(cmax-cmin))+360
+        if((C_MAX === RED) && (GREEN < BLUE)) {
+            this.hue = 60*((GREEN-BLUE)/(C_MAX-C_MIN))+360
         }
-        if(cmax === GREEN) {
-            this.hue = 60*((BLUE-RED)/(cmax-cmin))+120
+        if(C_MAX === GREEN) {
+            this.hue = 60*((BLUE-RED)/(C_MAX-C_MIN))+120
         }
-        if(cmax === BLUE) {
-            this.hue = 60*((RED-GREEN)/(cmax-cmin))+240
+        if(C_MAX === BLUE) {
+            this.hue = 60*((RED-GREEN)/(C_MAX-C_MIN))+240
         }
 
-        this.saturation = ((cmax-cmin)/cmax)*100
-        this.value = cmax*100
+        this.saturation = ((C_MAX-C_MIN)/C_MAX)*100
+        this.value = C_MAX*100
     }
 
 
